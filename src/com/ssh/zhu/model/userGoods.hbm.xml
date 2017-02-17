@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.ssh.zhu.model">
+    <class name="userGoods" table="userGoods">
+        <id name="id" column="id" type="java.lang.Integer"></id>
+        <property name="phone" column="phone" type="java.lang.String"></property>
+        <property name="name" column="name" type="java.lang.String" />
+        <property name="yield" column="yield" type="java.lang.Double" />
+        <property name="time" column="time" type="java.lang.Integer"></property>
+        <property name="inserv" column="inserv" type="java.lang.Double"></property>
+    </class>
+</hibernate-mapping>

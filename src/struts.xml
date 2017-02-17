@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+   "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+   "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="action" extends="struts-default,json-default">
+				<!--注册  -->
+		<action name="regist" class="registAction" method="regist">
+				<result name="login">login.jsp</result>
+		</action>
+				<!--展示 -->
+		<action name="showGood" class="selectGood" method="showGood" >
+			<result name="showGood" type="json">
+				<param name="root">showGood</param>
+			</result>
+		</action>
+				<!-- 注册查询用户存在与否 -->
+		<action name="registSelect" class="selectUser" method="registSelect">
+			<result name="registSelect" type="json">
+				<param name="root">registSelect</param>
+			</result>
+		</action>
+				<!-- 登录查询用户存在与否 -->	
+		<action name="loginSelect" class="selectUser" method="loginSelect">
+			<result name="loginSelect" type="json">
+				<param name="root">loginSelect</param>
+			</result>
+		</action>
+				<!-- 手机验证码 -->
+		<action name="getPhoneCode" class="phoneCode" method="getPhoneCode"></action>
+				<!-- 会员注册和提高 -->	
+		<action name="vipRegist" class="vipAction" method="vipRegist">
+			<result name="show">show.jsp</result>
+		</action>	
+	</package> 
+</struts>

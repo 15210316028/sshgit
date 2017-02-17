@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.ssh.zhu.model">
+    <class name="user" table="user">
+        <id name="phone" column="phone" type="java.lang.String"></id>
+        <property name="password" column="password" type="java.lang.String" />
+        <property name="kind" column="kind" type="java.lang.String" />
+        <property name="money" column="money" type="java.lang.Double"></property>
+    </class>
+</hibernate-mapping>
