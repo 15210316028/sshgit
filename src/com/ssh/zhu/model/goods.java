@@ -7,7 +7,6 @@ public class goods {
 	private String time;//产品投资期限
 	private Double money;//产品投资总额
 	private Double surplus;//产品可投金额（剩余）
-	private String kind;//产品等级
 	private String url;//路径
 	public String getUrl() {
 		return url;
@@ -50,12 +49,5 @@ public class goods {
 	}
 	public void setSurplus(Double surplus) {
 		this.surplus = surplus;
-	}
-	public String getKind() {
-		return kind;
-	}
-	public void setKind(String kind) {
-		this.kind = kind;
-	}
-	
+	}	
 }

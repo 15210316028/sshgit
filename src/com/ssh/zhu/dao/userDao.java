@@ -5,5 +5,4 @@ public interface userDao {
 	void insert(user user);	
 	user getUser(String phone);
 	user get(String phone,String password);
-	void update(user user);
 }

@@ -1,25 +1,23 @@
 package com.ssh.zhu.service.impl;
 
 import javax.annotation.Resource;
-import com.ssh.zhu.dao.impl.*;
+import com.ssh.zhu.dao.*;
 import org.springframework.stereotype.Service;
 import com.ssh.zhu.model.goods;
 import com.ssh.zhu.service.userGoodsService;
 @Service
 public class userGoodsImpl implements userGoodsService {
 	@Resource
-	private userGoodsDaoImpl userGoodsDaoImpl;
-	
-	public userGoodsDaoImpl getUserGoodsDaoImpl() {
-		return userGoodsDaoImpl;
+	private userGoodsDao userGoodsDao;
+	public userGoodsDao getUserGoodsDao() {
+		return userGoodsDao;
 	}
-	public void setUserGoodsDaoImpl(userGoodsDaoImpl userGoodsDaoImpl) {
-		this.userGoodsDaoImpl = userGoodsDaoImpl;
+	public void setUserGoodsDao(userGoodsDao userGoodsDao) {
+		this.userGoodsDao = userGoodsDao;
 	}
-
 	@Override
 	public Integer buy(String phone, goods good, Double inserv) {
-		return userGoodsDaoImpl.buy(phone, good, inserv);
+		return userGoodsDao.buy(phone, good, inserv);
 	}
 
 }

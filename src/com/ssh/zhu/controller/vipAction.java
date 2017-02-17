@@ -45,26 +45,4 @@ public class vipAction {
 //		System.out.println();
 //		return "show";		
 //	}
-	public String vipRegist()
-	{
-		ApplicationContext app=new ClassPathXmlApplicationContext("applicationContext.xml");
-		userServiceImpl us=(userServiceImpl) app.getBean("userServiceImpl");
-		HttpServletRequest req=ServletActionContext.getRequest();
-		Double money =user.getMoney();
-		user u1=(user) req.getSession().getAttribute("user");	
-		Double moneys = u1.getMoney()+money;
-		if(0<moneys/1000&&moneys/1000<10)
-			user.setKind("vip1");
-		else if(0<moneys/10000&&moneys/10000<10)
-			user.setKind("vip2");
-		else if(0<moneys/100000&&moneys/100000<10)
-			user.setKind("vip3");
-		else
-			user.setKind("vip4");
-		user.setMoney(moneys);
-		
-		us.exid(user);
-		System.out.println();
-		return "show";		
-	}
 }

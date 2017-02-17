@@ -5,35 +5,31 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 import com.ssh.zhu.model.user;
 import com.ssh.zhu.service.*;
-import com.ssh.zhu.dao.impl.*;
+import com.ssh.zhu.dao.*;
 @Service
 public class userServiceImpl implements userService {
 	@Resource
-	private userDaoImpl userDaoImpl;	
-	public userDaoImpl getUserDaoImpl() {
-		return userDaoImpl;
+	private userDao userDao;	
+	public userDao getUserDao() {
+		return userDao;
 	}
-	public void setUserDaoImpl(userDaoImpl userDaoImpl) {
-		this.userDaoImpl = userDaoImpl;
+
+	public void setUserDao(userDao userDao) {
+		this.userDao = userDao;
 	}
+
 	@Override
 	public void add(user user) {
-		userDaoImpl.insert(user);
+		userDao.insert(user);
 	}
 
 	@Override
 	public user getUser(String phone) {
-		return userDaoImpl.getUser(phone);
+		return userDao.getUser(phone);
 	}
 
 	@Override
 	public user get(String phone, String password) {
-		return userDaoImpl.get(phone, password);
+		return userDao.get(phone, password);
 	}
-
-	@Override
-	public void exid(user user) {
-		userDaoImpl.update(user);
-	}
-
 }

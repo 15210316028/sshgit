@@ -18,8 +18,6 @@ public class userDaoImpl implements userDao {
 
 	@Override
 	public void insert(user user){
-		user.setKind("vip0");
-		user.setMoney(0.0);
 		hibernateTemplate.save(user);
 	}
 
@@ -54,10 +52,5 @@ public class userDaoImpl implements userDao {
 			}
 		});
 
-	}
-
-	@Override
-	public void update(user user) {		
-		hibernateTemplate.update(user);
 	}
 }

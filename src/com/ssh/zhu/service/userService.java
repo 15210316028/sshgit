@@ -6,5 +6,4 @@ public interface userService {
 	void add(user user);	
 	user getUser(String phone);
 	user get(String phone,String password);
-	void exid(user user);
 }
