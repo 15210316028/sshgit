@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.ssh.zhu.model">
+    <class name="person" table="person">
+        <id name="idCard" column="idCard" type="java.lang.String"></id>
+        <property name="name" column="name" type="java.lang.String" />
+        <property name="phone" column="phone" type="java.lang.String" />
+        <property name="carKind" column="carKind" type="java.lang.String"></property>
+        <property name="carNum" column="carNum" type="java.lang.String"></property>
+    </class>
+</hibernate-mapping>
