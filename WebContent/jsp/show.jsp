@@ -18,13 +18,5 @@
 <c:if test="${user!=null}" scope="session" var="n">
 <span class="de">欢迎${user.phone}登陆</span>
 </c:if>
-<!--  <table>
-	<tr>
-		<td><input type="button" value="vip1" name="vip"/></td>
-		<td><input type="button" value="vip2" name="vip"/></td>
-		<td><input type="button" value="vip3" name="vip"/></td>
-		<td><input type="button" value="vip4" name="vip"/></td>
-	</tr>
-</table>-->
 </body>
 </html>

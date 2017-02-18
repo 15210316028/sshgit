@@ -245,7 +245,7 @@ $(document).ready(function() {
 		$("#tc  table:gt(1)").remove();
 		for(var i=0;i<goods.length;i++)
 		{
-			add[i]="<table border='1' class='goodTable'><tr><td rowspan='4'><img src='"+goods[i].url+"'/></td><td colspan='3'>"+goods[i].name+"</td></tr><tr><td>"+goods[i].yield+"</td><td>"+goods[i].time+"</td><td>"+goods[i].money+"</td></tr><tr><td>收益率</td><td>期限</td><td>总额</td></tr><tr><td>可投金额</td><td>"+goods[i].surplus+"</td><td><div class='buy'></div><div class='change'><input type='button' value='-' name='down'/><span>0</span><input type='button' value='+' name='up'/><div class='sure'></div></div></td></tr></table>";
+			add[i]="<table border='1' class='goodTable'><tr><td rowspan='4'><img src='"+goods[i].url+"'/></td><td colspan='3'>"+goods[i].name+"</td></tr><tr><td>"+goods[i].yield+"</td><td>"+goods[i].time+"</td><td>"+goods[i].money+"</td></tr><tr><td>收益率</td><td>期限</td><td>总额</td></tr><tr><td>可投金额</td><td>"+goods[i].surplus+"</td><td><div class='buy'></div><div class='change'><input type='button' value='-' name='down'/><span>0</span><input type='button' value='+' name='up'/><select><option value='百元' selected='selected'></option><option value='千元'></option><option value='万元'></option><option value='十万'></option><option value='百万'></option><option value='千万'></option></select><div class='sure'></div></div></td></tr></table>";
 			$("#tc").append(add[i]);
 		}
 	});
@@ -317,7 +317,6 @@ $(document).ready(function() {
 	$("input[name='up']").live('click',function(){
 		var inserv=$(this).prev().text();
 		var surplus=$(this).parents("td").prev().text();
-		alert(inserv+" "+surplus)
 		if(inserv<surplus)
 			inserv++;
 		$(this).prev().text(inserv);
