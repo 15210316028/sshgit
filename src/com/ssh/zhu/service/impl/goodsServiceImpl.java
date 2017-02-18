@@ -25,8 +25,8 @@ public class goodsServiceImpl implements goodsService {
 	}
 
 	@Override
-	public List<goods> queryAll(String kind) {
-		return goodsDao.selectAll(kind);
+	public List<goods> queryAll() {
+		return goodsDao.selectAll();
 	}
 
 	@Override

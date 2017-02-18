@@ -19,12 +19,12 @@ public class goodsDaoImpl implements goodsDao {
 	 * 根据产品VIP查询产品
 	 * 
 	 */
-	public List<goods> selectAll(final String kind) {	
+	public List<goods> selectAll() {	
 		return hibernateTemplate.execute(new HibernateCallback<List<goods>>() {
 			@SuppressWarnings("unchecked")
 			@Override
 			public List<goods> doInHibernate(Session session){
-				String sql="select * from goods where kind='"+kind+"'";
+				String sql="select * from goods";
 				List<goods> list=(List<goods>)session.createSQLQuery(sql).addEntity(goods.class).list();				
 				return list;				
 			}

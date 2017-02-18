@@ -35,6 +35,7 @@
                 <value>com/ssh/zhu/model/user.hbm.xml</value>  
                 <value>com/ssh/zhu/model/goods.hbm.xml</value>
                 <value>com/ssh/zhu/model/userGoods.hbm.xml</value>
+                <value>com/ssh/zhu/model/person.hbm.xml</value>
             </list>
           </property>   
     </bean>  

@@ -4,6 +4,6 @@ import java.util.List;
 import com.ssh.zhu.model.goods;
 public interface goodsService {
 	void add(goods good);
-	List<goods> queryAll(String kind);
+	List<goods> queryAll();
 	goods get(String name);
 }

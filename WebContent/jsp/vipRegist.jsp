@@ -17,16 +17,22 @@
 		<form action="vipRegist" method="post" id="vipForm">
 			<table class="ta">
 				<tr>
-					<td colspan="2">会员注册和提高</td>
+					<td colspan="2">会员注册</td>
 				</tr>
 				<tr>
-					<td><div class="phone"></div>手机号</td><td><input type="text" value="${user.phone}" name="user.phone" readonly="readonly"/></td>
+					<td><div class="phone"></div>身份证号</td><td><input type="text" placeHolder="输入银行卡号" name="person.idCard" id="idCard"/></td>
 				</tr>
 				<tr>
-					<td><div class="password"></div>密码</td><td><input type="password" value="${user.password}" name="user.password" readonly="readonly" /></td>
+					<td><div class="phone"></div>姓名</td><td><input type="text" placeHolder="输入姓名" name="person.name"/></td>
 				</tr>
 				<tr>
-					<td>抵押金额</td><td><input type="text" placeHolder="请输入抵押金额" id="vipMoney" name="user.money"/></td>
+					<td><div class="phone"></div>手机号</td><td><input type="text" placeHolder="输入银行预留手机号" name="person.phone"/></td>
+				</tr>
+				<tr>
+					<td><div class="phone"></div>银行卡种类</td><td><input type="text" placeHolder="输入银行卡种类" name="person.carKind"/></td>
+				</tr>
+				<tr>
+					<td><div class="phone"></div>银行卡号</td><td><input type="text" placeHolder="输入银行卡号" name="person.carNum"/></td>
 				</tr>
 				<tr>
 					<td style="font-size: 15px;width: 200px"><input type="checkbox" class="check" name="check"/>我同意《协议》</td><td><div id="vipRegists"></div></td>

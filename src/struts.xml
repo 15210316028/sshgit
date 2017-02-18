@@ -28,7 +28,19 @@
 		</action>
 				<!-- 手机验证码 -->
 		<action name="getPhoneCode" class="phoneCode" method="getPhoneCode"></action>
-				<!-- 会员注册和提高 -->	
+				<!-- 购买前查询是否会员 -->
+		<action name="vipSelect" class="selectPerson" method="vipSelect">
+			<result name="vipSelect" type="json">
+				<param name="root">vipSelect</param>
+			</result>
+		</action>
+				<!-- 会员注册前查询 -->
+		<action name="selectPerson" class="selectPerson" method="personSelect">
+			<result name="selectPerson" type="json">
+				<param name="root">selectPerson</param>
+			</result>
+		</action>
+				<!-- 会员注册 -->	
 		<action name="vipRegist" class="vipAction" method="vipRegist">
 			<result name="show">show.jsp</result>
 		</action>	

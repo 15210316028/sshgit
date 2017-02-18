@@ -16,15 +16,15 @@
 <span class="l">请登录</span><span class="r">请注册</span>
 </c:if>
 <c:if test="${user!=null}" scope="session" var="n">
-<span class="de">欢迎${user.phone}(${user.kind})登陆</span>
+<span class="de">欢迎${user.phone}登陆</span>
 </c:if>
-<table>
+<!--  <table>
 	<tr>
 		<td><input type="button" value="vip1" name="vip"/></td>
 		<td><input type="button" value="vip2" name="vip"/></td>
 		<td><input type="button" value="vip3" name="vip"/></td>
 		<td><input type="button" value="vip4" name="vip"/></td>
 	</tr>
-</table>
+</table>-->
 </body>
 </html>

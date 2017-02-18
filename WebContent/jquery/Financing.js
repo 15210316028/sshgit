@@ -239,73 +239,74 @@ $(document).ready(function() {
 	 * 产品展出
 	 */
 	var goods=[];
-	$.post("showGood","kind=vip1",function(text){
+	$.post("showGood",null,function(text){
 		goods=JSON.parse(text);
 		var add=[];
 		$("#tc  table:gt(1)").remove();
 		for(var i=0;i<goods.length;i++)
 		{
-			add[i]="<table border='1' class='goodTable'><tr><td rowspan='4'><img src='"+goods[i].url+"'/></td><td colspan='3'>"+goods[i].name+"(vip1)"+"</td></tr><tr><td>"+goods[i].yield+"</td><td>"+goods[i].time+"</td><td>"+goods[i].money+"</td></tr><tr><td>收益率</td><td>期限</td><td>总额</td></tr><tr><td>可投金额</td><td>"+goods[i].surplus+"</td><td><div class='buy'></div><div class='change'><input type='button' value='-' name='down'/><span>0</span><input type='button' value='+' name='up'/><div class='sure'></div></div></td></tr></table>";
+			add[i]="<table border='1' class='goodTable'><tr><td rowspan='4'><img src='"+goods[i].url+"'/></td><td colspan='3'>"+goods[i].name+"</td></tr><tr><td>"+goods[i].yield+"</td><td>"+goods[i].time+"</td><td>"+goods[i].money+"</td></tr><tr><td>收益率</td><td>期限</td><td>总额</td></tr><tr><td>可投金额</td><td>"+goods[i].surplus+"</td><td><div class='buy'></div><div class='change'><input type='button' value='-' name='down'/><span>0</span><input type='button' value='+' name='up'/><div class='sure'></div></div></td></tr></table>";
 			$("#tc").append(add[i]);
 		}
 	});
-	/*
-	 * 展出对应等级产品
-	 */
-	$("input[name='vip']").click(function() {
-		var vip=$(this).val();
-		$.post("showGood","kind="+vip,function(text){
-			goods=JSON.parse(text);
-			var add=[];
-			$("#tc  table:gt(0)").remove();
-			for(var i=0;i<goods.length;i++)
-			{
-				add[i]="<table border='1' class='goodTable'><tr><td rowspan='4'><img src='"+goods[i].url+"'/></td><td colspan='3'>"+goods[i].name+"("+vip+")"+"</td></tr><tr><td>"+goods[i].yield+"</td><td>"+goods[i].time+"</td><td>"+goods[i].money+"</td></tr><tr><td>收益率</td><td>期限</td><td>总额</td></tr><tr><td>可投金额</td><td>"+goods[i].surplus+"</td><td><div class='buy'></div><div class='change'><input type='button' value='-' name='down'/><span>0</span><input type='button' value='+' name='up'/><div class='sure'></div></div></td></tr></table>";
-				$("#tc").append(add[i]);
-			}
-		});
-	});
+//	/*
+//	 * 展出对应等级产品
+//	 */
+//	$("input[name='vip']").click(function() {
+//		var vip=$(this).val();
+//		$.post("showGood",null,function(text){
+//			goods=JSON.parse(text);
+//			var add=[];
+//			$("#tc  table:gt(0)").remove();
+//			for(var i=0;i<goods.length;i++)
+//			{
+//				add[i]="<table border='1' class='goodTable'><tr><td rowspan='4'><img src='"+goods[i].url+"'/></td><td colspan='3'>"+goods[i].name+"("+vip+")"+"</td></tr><tr><td>"+goods[i].yield+"</td><td>"+goods[i].time+"</td><td>"+goods[i].money+"</td></tr><tr><td>收益率</td><td>期限</td><td>总额</td></tr><tr><td>可投金额</td><td>"+goods[i].surplus+"</td><td><div class='buy'></div><div class='change'><input type='button' value='-' name='down'/><span>0</span><input type='button' value='+' name='up'/><div class='sure'></div></div></td></tr></table>";
+//				$("#tc").append(add[i]);
+//			}
+//		});
+//	});
 	/*
 	 * 对投资者进行判定验证
 	 */
 	$(".buy").live('click',function(){
-		var rode=$(this).parents("table").children(":first").children(":first").text();
-		var goodVip=rode.substr(5,rode.length-6);
-		var vip=$(".de").text();
-		var userVip=vip.substr(17,vip.length-20);
-		if(userVip=="")
+	//	var rode=$(this).parents("table").children(":first").children(":first").text();
+		var texts=$(".de").text();
+		var phone=texts.substr(2,texts.length-4);
+		if(phone=="")
 		{
-			if(confirm("尚未登陆，请登录")==true)
+			if(confirm("尚未登陆，请登录"))
 				location.href="login.jsp";
 		}
-		else if(userVip==0)
-		{
-			if(confirm("您是非会员，请注册会员")==true)
-				location.href="vipRegist.jsp";
-		}
-		else if(userVip<goodVip)
-		{
-			if(confirm("会员等级较低，无权购买本商品，请提高等级")==true)
-				location.href="vipRegist.jsp";
-		}			
 		else
 		{
-			$(this).hide();
-			$(this).next().show();
+			$.post("vipSelect","phone="+phone,function(text){
+				var person=JSON.parse(text);
+				if(person==null)
+				{
+					if(confirm("您是非会员，请注册会员"))
+						location.href="vipRegist.jsp";						
+				}
+				else
+				{
+					$(".buy").hide();
+					$(".change").show();
+				}		
+			});
 		}			
 	});
 	/*
 	 * 会员注册和提高
 	 */
-	$("#vipRegists").click(function() {
-		if($("#vipMoney").val()<=1000)
-			alert("输入金额不合法");
-		else
-		{
-			 $.post("vipRegist","user.money="+$("#vipMoney").val(),function(text){
+	$("#vipRegists").click(function() {		
+		$.post("selectPerson","idCard="+$("#idCard").val(),function(text){
+			var person=JSON.parse(text);
+			if(person!=null)
+			{
+				alert("该身份已被注册会员，请登录或重新输入");
+			}
+			else
 				$("#vipForm").submit();
-			 });
-		}		
+		});				
 	});
 	$("input[name='down']").live('click',function(){
 		var inserv=$(this).next().text();
@@ -316,6 +317,7 @@ $(document).ready(function() {
 	$("input[name='up']").live('click',function(){
 		var inserv=$(this).prev().text();
 		var surplus=$(this).parents("td").prev().text();
+		alert(inserv+" "+surplus)
 		if(inserv<surplus)
 			inserv++;
 		$(this).prev().text(inserv);

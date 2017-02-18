@@ -1,48 +1,35 @@
 package com.ssh.zhu.controller;
 
 import javax.annotation.Resource;
-import javax.servlet.http.HttpServletRequest;
-import org.apache.struts2.ServletActionContext;
+
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Controller;
-import com.ssh.zhu.model.user;
-import com.ssh.zhu.service.userService;
-import com.ssh.zhu.service.impl.userServiceImpl;
-
+import com.ssh.zhu.model.person;
+import com.ssh.zhu.service.personService;
 @Controller
 public class vipAction {
-	
-	
-	@Resource(name="userServiceImpl")
-	private userService userService;
-
-	public userService getUserService() {
-		return userService;
+	@Resource(name="personServiceImpl")
+	private personService personService;
+	public personService getPersonService() {
+		return personService;
 	}
-	public void setUserService(userService userService) {
-		this.userService = userService;
+	public void setPersonService(personService personService) {
+		this.personService = personService;
 	}
 
-	private user user;
-	
-	public user getUser() {
-		return user;
+	private person person;
+	public person getPerson() {
+		return person;
 	}
-	public void setUser(user user) {
-		this.user = user;
-	}	
-
-//	public String vipRegist()
-//	{
-//		HttpServletRequest req=ServletActionContext.getRequest();
-//		Double money = user.getMoney();
-//		user=(user) req.getSession().getAttribute("user");	
-//		user.setMoney(user.getMoney()+money);
-//		ApplicationContext app=new ClassPathXmlApplicationContext("applicationContext.xml");
-//		userServiceImpl us=(userServiceImpl) app.getBean("userServiceImpl");
-//		us.exid(user);
-//		System.out.println();
-//		return "show";		
-//	}
+	public void setPerson(person person) {
+		this.person = person;
+	}
+	public String vipRegist()
+	{
+		ApplicationContext app=new ClassPathXmlApplicationContext("applicationContext.xml");
+		personService ps=(personService)app.getBean("personServiceImpl");
+		ps.add(person);
+		return "show";		
+	}
 }

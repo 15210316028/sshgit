@@ -10,7 +10,6 @@
         <property name="time" column="time" type="java.lang.String" />
         <property name="money" column="money" type="java.lang.Double" />
         <property name="surplus" column="surplus" type="java.lang.Double" />
-        <property name="kind" column="kind" type="java.lang.String"></property>
         <property name="url" column="url" type="java.lang.String"></property>
     </class>
 </hibernate-mapping>

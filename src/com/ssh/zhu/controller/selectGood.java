@@ -35,9 +35,7 @@ public class selectGood {
 		this.goodsService = goodsService;
 	}
 	public String showGood() {
-		HttpServletRequest req=ServletActionContext.getRequest();
-		String kind=req.getParameter("kind");
-		List<goods> l= goodsService.queryAll(kind);
+		List<goods> l= goodsService.queryAll();
 		JSONArray ja=JSONArray.fromObject(l);
 		showGood=ja.toString();
 		return "showGood";
