@@ -1,8 +1,5 @@
 package com.ssh.zhu.dao.impl;
 import javax.annotation.Resource;
-import javax.servlet.http.HttpServletRequest;
-
-import org.apache.struts2.ServletActionContext;
 import org.hibernate.*;
 import org.springframework.orm.hibernate3.*;
 import org.springframework.stereotype.*;
