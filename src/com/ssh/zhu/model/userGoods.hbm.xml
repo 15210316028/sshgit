@@ -8,7 +8,7 @@
         <property name="phone" column="phone" type="java.lang.String"></property>
         <property name="name" column="name" type="java.lang.String" />
         <property name="yield" column="yield" type="java.lang.Double" />
-        <property name="time" column="time" type="java.lang.Integer"></property>
+        <property name="time" column="time" type="java.lang.String"></property>
         <property name="inserv" column="inserv" type="java.lang.Double"></property>
     </class>
 </hibernate-mapping>

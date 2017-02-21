@@ -5,7 +5,7 @@ public class userGoods {
 	private String phone;//账号
 	private String name;//产品名称
 	private Double yield;//产品收益率（%）
-	private Integer time;//产品投资期限
+	private String time;//产品投资期限
 	private Double inserv;//投资金额
 	public Integer getId() {
 		return id;
@@ -31,10 +31,10 @@ public class userGoods {
 	public void setYield(Double yield) {
 		this.yield = yield;
 	}
-	public Integer getTime() {
+	public String getTime() {
 		return time;
 	}
-	public void setTime(Integer time) {
+	public void setTime(String time) {
 		this.time = time;
 	}
 	public Double getInserv() {

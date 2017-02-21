@@ -245,7 +245,7 @@ $(document).ready(function() {
 		$("#tc  table:gt(1)").remove();
 		for(var i=0;i<goods.length;i++)
 		{
-			add[i]="<table border='1' class='goodTable'><tr><td rowspan='4'><img src='"+goods[i].url+"'/></td><td colspan='3'>"+goods[i].name+"</td></tr><tr><td>"+goods[i].yield+"</td><td>"+goods[i].time+"</td><td>"+goods[i].money+"</td></tr><tr><td>收益率</td><td>期限</td><td>总额</td></tr><tr><td>可投金额</td><td>"+goods[i].surplus+"</td><td><div class='buy'></div><div class='change'><input type='button' value='-' name='down'/><span>0</span><input type='button' value='+' name='up'/><select><option selected='selected'>百元</option><option>千元</option><option>万元</option><option>十万</option><option>百万</option><option>千万</option></select><div class='sure'></div></div></td></tr></table>";
+			add[i]="<table border='1' class='goodTable'><tr><td rowspan='4'><img src='"+goods[i].url+"'/></td><td colspan='3'>"+goods[i].name+"</td><input type='hidden' value='"+goods[i].id+"' name='id'/></tr><tr><td>"+goods[i].yield+"</td><td>"+goods[i].time+"</td><td>"+goods[i].money+"元</td></tr><tr><td>收益率</td><td>期限</td><td>总额</td></tr><tr><td>可投金额</td><td name='surplus'>"+goods[i].surplus+"元</td><td width='100px'><div class='buy' name='buy'></div><div class='change' name='change'><input type='button' value='-' name='down'/><span name='inserv'>0</span><input type='button' value='+' name='up'/><select name='xuanze'><option selected='selected' value='100'>百元</option><option value='1000'>千元</option><option value='10000'>万元</option><option value='100000'>十万</option><option value='1000000'>百万</option><option value='10000000'>千万</option></select><div class='sure'></div></div></td></tr></table>";
 			$("#tc").append(add[i]);
 		}
 	});
@@ -268,10 +268,12 @@ $(document).ready(function() {
 	/*
 	 * 对投资者进行判定验证
 	 */
-	$(".buy").live('click',function(){
-	//	var rode=$(this).parents("table").children(":first").children(":first").text();
+	$("[name='buy']").live('click',function(){
 		var texts=$(".de").text();
 		var phone=texts.substr(2,texts.length-4);
+		var name=$(this).parents("table").children(":first").children(":first").text();
+		var $buy=$(this);
+		var $change=$(this).next();
 		if(phone=="")
 		{
 			if(confirm("尚未登陆，请登录"))
@@ -288,8 +290,8 @@ $(document).ready(function() {
 				}
 				else
 				{
-					$(".buy").hide();
-					$(".change").show();
+					$buy.hide();
+					$change.show();
 				}		
 			});
 		}			
@@ -315,27 +317,29 @@ $(document).ready(function() {
 		$(this).next().text(inserv)
 	});
 	$("input[name='up']").live('click',function(){
-		var inserv=$(this).prev().text();
-		var surplus=$(this).parents("td").prev().text();
-		if(inserv<surplus)
-			inserv++;
-		$(this).prev().text(inserv);
+		var $inserv=$(this).prev().text();
+		var $surplus=$(this).parents("td").prev().text();
+		var touzi=(parseInt($inserv)+1)*($(this).next().val());
+		if(touzi<$surplus)
+			$inserv++;
+		$(this).prev().text($inserv);
 	});
-	/*$(".sure").live('click',function(){
-		var inserv=$(this).prev().prev().text();
-		var text=$(".de").text();
-		var phone=text.substr(2,text.length-10);
-		var texts=$(this).parents("table").children(":first").children(":first").text();
-		var name=texts.substr(0,texts.length-6);
-		$.post("buyGood","phone="+phone+"&name="+name+"&inserv="+inserv,function(text){
-			goods=JSON.parse(text);
-			var add=[];
-			$("#tc  table:gt(0)").remove();
-			for(var i=0;i<goods.length;i++)
+	$(".sure").live('click',function(){
+		var texts=$(".de").text();
+		var phone=texts.substr(2,texts.length-4);
+		var name=$(this).parents("table").children(":first").children(":first").text();
+		var num=$(this).parent().text();
+		var nums=num.substr(0,num.length-12);
+		var inserv=(parseInt(nums))*(parseInt($(this).prev().val()));
+		var id=$("input[name='id']").val();
+		$.post("buyGood","phone="+phone+"&name="+name+"&inserv="+inserv+"&id="+id,function(text){
+			if(text==null)
+				alert("您未能成功购买本产品");
+			else
 			{
-				add[i]="<table border='1'><tr><td colspan='3'>"+goods[i].name+"("+vip+")"+"</td></tr><tr><td>"+goods[i].yield+"</td><td>"+goods[i].time+"</td><td>"+goods[i].money+"</td></tr><tr><td>收益率</td><td>期限</td><td>总额</td></tr><tr><td>可投金额</td><td>"+goods[i].surplus+"</td><td><div class='buy'></div><div class='change'><input type='button' value='-' name='down'/><span>0</span><input type='button' value='+' name='up'/><div class='sure'></div></div></td></tr></table>";
-				$("#tc").append(add[i]);
+				alert(text);
+				location.href="show.jsp";
 			}
 		});
-	});*/
+	});
 });

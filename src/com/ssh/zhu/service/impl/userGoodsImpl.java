@@ -4,6 +4,7 @@ import javax.annotation.Resource;
 import com.ssh.zhu.dao.*;
 import org.springframework.stereotype.Service;
 import com.ssh.zhu.model.goods;
+import com.ssh.zhu.model.userGoods;
 import com.ssh.zhu.service.userGoodsService;
 @Service
 public class userGoodsImpl implements userGoodsService {
@@ -16,8 +17,12 @@ public class userGoodsImpl implements userGoodsService {
 		this.userGoodsDao = userGoodsDao;
 	}
 	@Override
-	public Integer buy(String phone, goods good, Double inserv) {
-		return userGoodsDao.buy(phone, good, inserv);
+	public void buy(userGoods userGoods) {
+		userGoodsDao.buy(userGoods);
+	}
+	@Override
+	public userGoods get(String phone,goods good) {
+		return userGoodsDao.get(phone, good);
 	}
 
 }

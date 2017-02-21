@@ -34,4 +34,9 @@ public class goodsServiceImpl implements goodsService {
 		return goodsDao.get(name);
 	}
 
+	@Override
+	public void exid(goods good) {
+		goodsDao.update(good);		
+	}
+
 }

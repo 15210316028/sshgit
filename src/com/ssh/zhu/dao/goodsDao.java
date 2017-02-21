@@ -6,4 +6,5 @@ public interface goodsDao {
 	List<goods> selectAll();
 	goods get(String name);
 	void insert(goods good); 
+	void update(goods good);
 }

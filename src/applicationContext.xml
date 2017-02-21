@@ -43,5 +43,6 @@
 	<bean id="hibernateTemplate" class="org.springframework.orm.hibernate3.HibernateTemplate">
 		<property name="sessionFactory" ref="sessionFactory"/>
 	</bean>
-	
+	<bean id="userGoods" class="com.ssh.zhu.model.userGoods"></bean>
+	<bean id="goods" class="com.ssh.zhu.model.goods"></bean>
 </beans>

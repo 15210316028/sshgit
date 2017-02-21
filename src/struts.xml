@@ -43,6 +43,14 @@
 				<!-- 会员注册 -->	
 		<action name="vipRegist" class="vipAction" method="vipRegist">
 			<result name="show">show.jsp</result>
-		</action>	
+		</action>
+				<!-- 购买前查询是否买过 -->
+		<action name="buySelect" class="buySelect" method="buySelects">
+			<result name="buySelect" type="json">
+				<param name="root">buySelect</param>
+			</result>
+		</action>
+				<!-- 产品购买 -->
+		<action name="buyGood" class="buyGoods" method="buyGood"></action>	
 	</package> 
 </struts>
