@@ -1,8 +1,6 @@
 package com.ssh.zhu.dao.impl;
 import javax.annotation.Resource;
 import org.hibernate.Session;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.orm.hibernate3.HibernateCallback;
 import org.springframework.orm.hibernate3.HibernateTemplate;
 import org.springframework.stereotype.Repository;
