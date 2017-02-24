@@ -12,6 +12,14 @@ $(document).ready(function() {
 		//账号登录页进入注册页
 		location.href="regist.jsp";
 	});
+//	$(".l").click(function() {
+//		//产品页进入登陆页
+//		location.href="login.jsp";
+//	});
+//	$(".r").click(function() {
+//		//产品页进入注册页
+//		location.href="regist.jsp";
+//	});
 	/*
 	 * 注册手机号失去焦点事件
 	 */

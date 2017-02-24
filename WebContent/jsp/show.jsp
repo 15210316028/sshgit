@@ -11,10 +11,6 @@
  <script src="../jquery/Financing.js"></script>
 </head>
 <body id="tc">
-<span class="h">欢迎购物</span>
-<c:if test="${user==null}" scope="session" var="m">
-<span class="l">请登录</span><span class="r">请注册</span>
-</c:if>
 <c:if test="${user!=null}" scope="session" var="n">
 <span class="de">欢迎${user.phone}登陆</span>
 </c:if>
